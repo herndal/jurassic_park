@@ -22,8 +22,17 @@ RSpec.describe Cage, type: :model do
     expect(my_cage.status).to eq('DOWN')
   end
 
+  it "Cannot be powered off if it contains any dinosaurs" do
+    my_cage = create(:cage)
+    gruber = create(:dinosaur)
+    gruber.move(my_cage.id)
+    my_cage.power_off
+    expect(my_cage.errors[:base]).to eq(["Cannot power off while containing dinosaurs"])
+  end
+
 end
 
 # Cages must have a maximum capacity for how many dinosaurs it can hold.
 # Cages know how many dinosaurs are contained.
 # Cages have a power status of ACTIVE or DOWN.
+# Cages cannot be powered off if they contain dinosaurs.
