@@ -10,7 +10,7 @@ class Dinosaur < ApplicationRecord
     'Ankylosaurus',
     'Triceratops'
   ]
-  # belongs_to :cage, optional: true
+  belongs_to :cage, optional: true
 
   def type
     ['Tyrannosaurus',
@@ -18,5 +18,10 @@ class Dinosaur < ApplicationRecord
     'Spinosaurus',
     'Megalosaurus'].include?(species) ?
     "Carnivore" : "Herbivore"
+  end
+
+  def move(new_cage_id)
+    self.cage_id = new_cage_id
+    self.save
   end
 end

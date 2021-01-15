@@ -4,14 +4,16 @@ This project should take approximately 2 to 5 hours to complete and help PrizePi
 Business Requirements
 It's 1993 and you're the lead software developer for the new Jurassic Park. Park operations needs a system to keep track of the different cages around the park and the different dinosaurs in each one. You'll need to develop a JSON formatted RESTful API to allow the builders to create new cages, and add dinosaurs to the cages. It will also allow doctors and scientists the ability to edit/retrieve the statuses of dinosaurs and cages.
 
-• Cages must have a maximum capacity for how many dinosaurs it can hold.
-• Cages know how many dinosaurs are contained.
-• Cages have a power status of ACTIVE or DOWN.
+X Each dinosaur must have a name.
+X Each dinosaur must have a species (See enumerated list below, feel free to add others).
+X Each dinosaur is considered an herbivore or a carnivore, depending on its species.
+
+X Cages must have a maximum capacity for how many dinosaurs it can hold.
+X Cages know how many dinosaurs are contained.
+X Cages have a power status of ACTIVE or DOWN.
+
 • Cages cannot be powered off if they contain dinosaurs.
 • Dinosaurs cannot be moved into a cage that is powered down.
-• Each dinosaur must have a name.
-• Each dinosaur must have a species (See enumerated list below, feel free to add others).
-• Each dinosaur is considered an herbivore or a carnivore, depending on its species.
 • Herbivores cannot be in the same cage as carnivores.
 • Carnivores can only be in a cage with other dinosaurs of the same species.
 • Must be able to query a listing of dinosaurs in a specific cage.

@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_152743) do
+ActiveRecord::Schema.define(version: 2021_01_15_160613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cages", force: :cascade do |t|
+    t.integer "capacity", null: false
+    t.boolean "is_active", default: true, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "dinosaurs", force: :cascade do |t|
     t.string "name", null: false
