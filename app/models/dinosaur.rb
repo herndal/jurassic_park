@@ -21,7 +21,14 @@ class Dinosaur < ApplicationRecord
   end
 
   def move(new_cage_id)
-    self.cage_id = new_cage_id
-    self.save
+    new_cage = Cage.find(new_cage_id)
+    if !new_cage.is_active
+      errors[:base] << "Cannot move into a cage that is powered down" 
+    elsif new_cage.full?
+      errors[:base] << "Cannot move into a cage that is at capacity"
+    else
+      self.cage_id = new_cage_id
+      self.save
+    end
   end
 end
