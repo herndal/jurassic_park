@@ -10,11 +10,14 @@ I understand that Puma servers are multi-threaded by nature. Creating concurrent
 
 ### Boolean validations
 Is there a good way to test this? Or is it just unnecessary? I had it in, but after reading shoulda-matchers warning, I removed it.
-Cage model:
+  Cage model:
+```
 validates_inclusion_of :is_active, in: [true, false]
-Cage model spec:
+```
+  Cage model spec:
+```
 it { should validate_inclusion_of(:is_active).in_array([true, false]) }
-Shoulda-matchers warning:
+```
 ************************************************************************
 Warning from shoulda-matchers:
 
