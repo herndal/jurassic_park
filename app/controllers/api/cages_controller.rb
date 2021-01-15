@@ -1,6 +1,10 @@
 class Api::CagesController < ApplicationController
   def index
-    @api_cages = Cage.all
+    if params[:is_active]
+      @api_cages = Cage.where(is_active: params[:is_active])
+    else
+      @api_cages = Cage.all
+    end
   end
 
   def show
