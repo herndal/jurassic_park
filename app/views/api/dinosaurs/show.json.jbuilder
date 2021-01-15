@@ -1,1 +1,1 @@
-json.partial! "api_dinosaurs/api_dinosaur", api_dinosaur: @api_dinosaur
+json.partial! "api/dinosaurs/api_dinosaur", api_dinosaur: @api_dinosaur
