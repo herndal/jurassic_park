@@ -1,6 +1,5 @@
 class Cage < ApplicationRecord
   validates_presence_of :capacity
-  validates_presence_of :is_active
 
   has_many :dinosaurs
 
@@ -14,6 +13,10 @@ class Cage < ApplicationRecord
 
   def empty?
     size == 0
+  end
+
+  def full?
+    size == capacity
   end
 
   def power_off

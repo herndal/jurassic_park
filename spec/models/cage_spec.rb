@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Cage, type: :model do
   it { should validate_presence_of(:capacity) }
-  it { should validate_presence_of(:is_active) }
 
   it "Should know how many dinosaurs are contained" do
     my_cage = Cage.create!(capacity: 3)
@@ -18,7 +17,6 @@ RSpec.describe Cage, type: :model do
     my_cage = create(:cage)
     expect(my_cage.status).to eq('ACTIVE')
     my_cage.power_off
-    my_cage.save
     expect(my_cage.status).to eq('DOWN')
   end
 
