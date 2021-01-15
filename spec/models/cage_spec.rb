@@ -4,28 +4,28 @@ RSpec.describe Cage, type: :model do
   it { should validate_presence_of(:capacity) }
 
   it "Should know how many dinosaurs are contained" do
-    my_cage = Cage.create!(capacity: 3)
-    burt = create(:dinosaur)
-    nigel = create(:dinosaur)
-    expect(my_cage.size).to eq(0)
-    burt.move(my_cage.id)
-    nigel.move(my_cage.id)
-    expect(my_cage.size).to eq(2)
+    cage = create(:cage)
+    burt = create(:herbivore)
+    nigel = create(:herbivore)
+    expect(cage.size).to eq(0)
+    burt.move(cage.id)
+    nigel.move(cage.id)
+    expect(cage.size).to eq(2)
   end
 
   it "Should have a power status of ACTIVE or DOWN" do
-    my_cage = create(:cage)
-    expect(my_cage.status).to eq('ACTIVE')
-    my_cage.power_off
-    expect(my_cage.status).to eq('DOWN')
+    cage = create(:cage)
+    expect(cage.status).to eq('ACTIVE')
+    cage.power_off
+    expect(cage.status).to eq('DOWN')
   end
 
   it "Cannot be powered off if it contains any dinosaurs" do
-    my_cage = create(:cage)
+    cage = create(:cage)
     gruber = create(:dinosaur)
-    gruber.move(my_cage.id)
-    my_cage.power_off
-    expect(my_cage.errors[:base]).to eq(["Cannot power off while containing dinosaurs"])
+    gruber.move(cage.id)
+    cage.power_off
+    expect(cage.errors[:base]).to eq(["Cannot power off while containing dinosaurs"])
   end
 
 end

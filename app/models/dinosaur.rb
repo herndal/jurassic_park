@@ -26,9 +26,21 @@ class Dinosaur < ApplicationRecord
       errors[:base] << "Cannot move into a cage that is powered down" 
     elsif new_cage.full?
       errors[:base] << "Cannot move into a cage that is at capacity"
-    else
+    elsif new_cage.empty? || match_type(new_cage)
       self.cage_id = new_cage_id
       self.save
     end
+  end
+
+  def match_type(new_cage)
+    other_saurus = new_cage.dinosaurs.first
+    if type == "Herbivore"
+      return true if other_saurus.type == "Herbivore"
+      errors[:base] << "Herbivores cannot be caged with carnivores"
+    else
+      return true if other_saurus.species == species
+      errors[:base] << "Carnivores must be caged with the same species"
+    end
+    false
   end
 end
