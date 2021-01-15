@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: dinosaurs
+#
+#  id         :bigint           not null, primary key
+#  name       :string           not null
+#  species    :string           not null
+#  cage_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Dinosaur < ApplicationRecord
   validates :name, :species, presence: true
   validates_inclusion_of :species, in: [

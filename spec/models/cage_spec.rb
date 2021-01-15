@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: cages
+#
+#  id         :bigint           not null, primary key
+#  capacity   :integer          not null
+#  is_active  :boolean          default(TRUE), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Cage, type: :model do
